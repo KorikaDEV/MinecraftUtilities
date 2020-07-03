@@ -4,9 +4,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DataControll extends JavaPlugin {
 
+    DataSet[] dataSets;
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        dataSets = new DataSet[]{};
 
     }
 
