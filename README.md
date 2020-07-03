@@ -1,2 +1,2 @@
 # MinecraftUtilities
-:o)
+:o|)
