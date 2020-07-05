@@ -2,9 +2,9 @@ package minecraftutilities.datacontroll;
 
 public class DataIndicator {
 
-    String[] rows;
-    String indicatorRow;
-    String searchedObject;
+    public String[] rows;
+    public String indicatorRow;
+    public String searchedObject;
 
     public DataIndicator(String[] rows, String indicatorRow, String searchedObject){
 
