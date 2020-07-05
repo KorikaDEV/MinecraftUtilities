@@ -11,15 +11,24 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.Method;
+import java.util.function.Function;
+
 public abstract class Gui implements Listener {
 
     String name;
-
     private Inventory inv;
 
-    public Gui (){
-        inv = Bukkit.createInventory(null, 9, "Test");
+    public Gui (String guiName, String invName, int size){
+        this.name = guiName;
+        inv = Bukkit.createInventory(null, 1, invName);
         inv.addItem(new GuiItem(Material.DIAMOND_SWORD, "Example Sword","1", ",22", "333"));
+    }
+
+    public void addItem(ItemStack itemStack, int position) {
+        if (itemStack instanceof GuiItem) {
+            Method method = ((GuiItem) itemStack).method;
+        }
     }
 
     public void openGui(final HumanEntity entity) {
@@ -29,15 +38,19 @@ public abstract class Gui implements Listener {
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent clickEvent) {
         if (clickEvent.getInventory() != inv) return;
-
         clickEvent.setCancelled(true);
-
         final ItemStack clickedItem = clickEvent.getCurrentItem();
-
         if (clickedItem == null || clickedItem.getType() == Material.AIR) return;
-
         final Player player = (Player)clickEvent.getWhoClicked();
-        player.sendMessage("Slot" + clickEvent.getRawSlot());
+        if(clickedItem instanceof GuiItem && ((GuiItem) clickedItem).getMethod() != null) {
+            try {
+                ((GuiItem)clickedItem).method.invoke(null);
+            } catch (Exception e) {
+
+            }
+            player.sendMessage("Slot" + clickEvent.getRawSlot());
+        }
+
     }
 
     @EventHandler
