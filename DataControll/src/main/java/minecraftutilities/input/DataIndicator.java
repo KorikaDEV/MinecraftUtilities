@@ -1,4 +1,4 @@
-package minecraftutilities.in;
+package minecraftutilities.input;
 
 public class DataIndicator {
 

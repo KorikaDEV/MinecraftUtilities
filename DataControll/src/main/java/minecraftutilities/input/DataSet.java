@@ -1,6 +1,6 @@
-package minecraftutilities.in;
+package minecraftutilities.input;
 
-import minecraftutilities.out.ResponseDataRow;
+import minecraftutilities.output.ResponseDataRow;
 
 import java.util.ArrayList;
 

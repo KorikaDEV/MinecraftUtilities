@@ -1,6 +1,6 @@
 package minecraftutilities.datacontrol;
 
-import minecraftutilities.in.DataSet;
+import minecraftutilities.input.DataSet;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DataControl extends JavaPlugin {

@@ -1,10 +1,10 @@
 package minecraftutilities.datasets;
 
-import minecraftutilities.in.DataColumnConstructor;
-import minecraftutilities.in.DataIndicator;
-import minecraftutilities.in.DataSet;
-import minecraftutilities.in.DataStorageType;
-import minecraftutilities.out.ResponseDataRow;
+import minecraftutilities.input.DataColumnConstructor;
+import minecraftutilities.input.DataIndicator;
+import minecraftutilities.input.DataSet;
+import minecraftutilities.input.DataStorageType;
+import minecraftutilities.output.ResponseDataRow;
 
 import java.util.ArrayList;
 

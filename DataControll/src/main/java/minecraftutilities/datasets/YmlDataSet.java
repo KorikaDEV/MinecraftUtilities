@@ -1,12 +1,12 @@
 package minecraftutilities.datasets;
 
 import minecraftutilities.datacontrol.*;
-import minecraftutilities.in.DataColumnConstructor;
-import minecraftutilities.in.DataIndicator;
-import minecraftutilities.in.DataSet;
-import minecraftutilities.in.DataStorageType;
-import minecraftutilities.out.DataColumn;
-import minecraftutilities.out.ResponseDataRow;
+import minecraftutilities.input.DataColumnConstructor;
+import minecraftutilities.input.DataIndicator;
+import minecraftutilities.input.DataSet;
+import minecraftutilities.input.DataStorageType;
+import minecraftutilities.output.DataColumn;
+import minecraftutilities.output.ResponseDataRow;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
