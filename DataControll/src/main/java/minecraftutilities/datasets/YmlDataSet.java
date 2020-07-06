@@ -1,6 +1,12 @@
 package minecraftutilities.datasets;
 
-import minecraftutilities.datacontroll.*;
+import minecraftutilities.datacontrol.*;
+import minecraftutilities.in.DataColumnConstructor;
+import minecraftutilities.in.DataIndicator;
+import minecraftutilities.in.DataSet;
+import minecraftutilities.in.DataStorageType;
+import minecraftutilities.out.DataColumn;
+import minecraftutilities.out.ResponseDataRow;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -15,14 +21,14 @@ public class YmlDataSet extends DataSet {
     String configName;
     FileConfiguration config;
 
-    public YmlDataSet(String[] rows, String configName) {
-        super(DataStorageType.YML, rows, null);
+    public YmlDataSet(ArrayList<DataColumnConstructor> columns, String configName) {
+        super(DataStorageType.YML, columns, null);
         this.configName = configName;
     }
 
     @Override
-    public void save(String[] data) {
-        if(data.length == rows.length){
+    public void save(Object[] data) {
+        if(data.length == columns.size()){
             ConfigurationSection configData = config.getConfigurationSection("data");
             if(configData != null){
                 int index = configData.getKeys(false).toArray().length;
@@ -33,9 +39,9 @@ public class YmlDataSet extends DataSet {
         }
     }
 
-    private void AddConfigDataAndSave(int index, String[] data){
-        for (String row : rows) {
-            config.addDefault("data." + index + "." + row, data[Arrays.asList(rows).indexOf(row)]);
+    private void AddConfigDataAndSave(int index, Object[] data){
+        for (DataColumnConstructor column : columns) {
+            config.addDefault("data." + index + "." + column.name, data[Arrays.asList(columns).indexOf(column)]);
             config.options().copyDefaults(true);
             try{
                 config.save(ymlFile);
@@ -79,7 +85,7 @@ public class YmlDataSet extends DataSet {
 
     @Override
     public void init() {
-        ymlFile = new File(DataControll.dcplugin.getDataFolder()+"/"+ configName + ".yml");
+        ymlFile = new File(DataControl.dcplugin.getDataFolder()+"/"+ configName + ".yml");
         config = YamlConfiguration.loadConfiguration(ymlFile);
         try {
             config.save(ymlFile);

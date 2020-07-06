@@ -1,4 +1,4 @@
-package minecraftutilities.datacontroll;
+package minecraftutilities.in;
 
 public class DataIndicator {
 

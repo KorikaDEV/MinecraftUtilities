@@ -1,21 +1,23 @@
-package minecraftutilities.datacontroll;
+package minecraftutilities.in;
+
+import minecraftutilities.out.ResponseDataRow;
 
 import java.util.ArrayList;
 
 public abstract class DataSet {
 
     public DataStorageType type;
-    public String[] rows;
+    public ArrayList<DataColumnConstructor> columns;
     public String[] types;
 
-    public DataSet(DataStorageType type, String[] rows, String[] types){
+    public DataSet(DataStorageType type, ArrayList<DataColumnConstructor> columns, String[] types){
 
         this.type = type;
-        this.rows = rows;
+        this.columns = columns;
         this.types = types;
     }
 
-    public abstract void save(String[] data);
+    public abstract void save(Object[] data);
     public abstract boolean contains(String row, String value);
     public abstract ArrayList<ResponseDataRow> get(DataIndicator dataIndicator);
     public abstract void init();

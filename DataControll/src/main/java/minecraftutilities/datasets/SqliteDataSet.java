@@ -1,20 +1,21 @@
 package minecraftutilities.datasets;
 
-import minecraftutilities.datacontroll.DataIndicator;
-import minecraftutilities.datacontroll.DataSet;
-import minecraftutilities.datacontroll.DataStorageType;
-import minecraftutilities.datacontroll.ResponseDataRow;
+import minecraftutilities.in.DataColumnConstructor;
+import minecraftutilities.in.DataIndicator;
+import minecraftutilities.in.DataSet;
+import minecraftutilities.in.DataStorageType;
+import minecraftutilities.out.ResponseDataRow;
 
 import java.util.ArrayList;
 
 public class SqliteDataSet extends DataSet {
 
-    public SqliteDataSet(String[] rows, String[] types) {
-        super(DataStorageType.SQLITE, rows, types);
+    public SqliteDataSet(ArrayList<DataColumnConstructor> columns, String[] types) {
+        super(DataStorageType.SQLITE, columns, types);
     }
 
     @Override
-    public void save(String[] data) {
+    public void save(Object[] data) {
 
     }
 

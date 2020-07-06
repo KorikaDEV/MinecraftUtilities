@@ -1,8 +1,9 @@
-package minecraftutilities.datacontroll;
+package minecraftutilities.datacontrol;
 
+import minecraftutilities.in.DataSet;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class DataControll extends JavaPlugin {
+public final class DataControl extends JavaPlugin {
 
     public static JavaPlugin dcplugin;
 
