@@ -14,14 +14,14 @@ import org.bukkit.inventory.ItemStack;
 import java.lang.reflect.Method;
 import java.util.function.Function;
 
-public abstract class Gui implements Listener {
+public class Gui implements Listener {
 
     String name;
     private Inventory inv;
 
     public Gui (String guiName, String invName, int size){
         this.name = guiName;
-        inv = Bukkit.createInventory(null, 1, invName);
+        inv = Bukkit.createInventory(null, size, invName);
         inv.addItem(new GuiItem(Material.DIAMOND_SWORD, "Example Sword","1", ",22", "333"));
     }
 
@@ -29,6 +29,7 @@ public abstract class Gui implements Listener {
         if (itemStack instanceof GuiItem) {
             Method method = ((GuiItem) itemStack).method;
         }
+        inv.setItem(position, itemStack);
     }
 
     public void openGui(final HumanEntity entity) {
