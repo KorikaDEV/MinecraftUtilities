@@ -1,5 +1,5 @@
 name: DataControl
 version: ${project.version}
-main: minecraftutilities.datacontroll.DataControll
+main: minecraftutilities.datacontrol.DataControl
 api-version: 1.15
 authors: [StringBuffer]

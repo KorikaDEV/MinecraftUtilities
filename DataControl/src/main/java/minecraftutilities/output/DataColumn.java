@@ -2,9 +2,9 @@ package minecraftutilities.output;
 
 public class DataColumn {
     public String columnName;
-    public String columnValue;
+    public Object columnValue;
 
-    public DataColumn(String columnName, String columnValue){
+    public DataColumn(String columnName, Object columnValue){
         this.columnName = columnName;
         this.columnValue = columnValue;
     }

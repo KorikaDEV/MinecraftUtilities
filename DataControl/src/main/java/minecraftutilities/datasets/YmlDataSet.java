@@ -22,7 +22,7 @@ public class YmlDataSet extends DataSet {
     FileConfiguration config;
 
     public YmlDataSet(ArrayList<DataColumnConstructor> columns, String configName) {
-        super(DataStorageType.YML, columns, null);
+        super(DataStorageType.YML, columns);
         this.configName = configName;
     }
 
@@ -41,7 +41,7 @@ public class YmlDataSet extends DataSet {
 
     private void AddConfigDataAndSave(int index, Object[] data){
         for (DataColumnConstructor column : columns) {
-            config.addDefault("data." + index + "." + column.name, data[Arrays.asList(columns).indexOf(column)]);
+            config.addDefault("data." + index + "." + column.name, data[columns.indexOf(column)]);
             config.options().copyDefaults(true);
             try{
                 config.save(ymlFile);
@@ -52,12 +52,18 @@ public class YmlDataSet extends DataSet {
     }
 
     @Override
-    public boolean contains(String row, String value) {
+    public boolean contains(String column, Object value) {
         Iterator<String> iter = config.getConfigurationSection("data").getKeys(false).iterator();
         while(iter.hasNext()){
-            String resultvalue = config.getString("data." + iter.next() + "." + row);
-            if(resultvalue.equalsIgnoreCase(value)){
-                return true;
+            Object resultvalue = config.get("data." + iter.next() + "." + column);
+            if(value instanceof String && resultvalue instanceof String){
+                if(((String) resultvalue).equalsIgnoreCase((String)value)){
+                    return true;
+                }
+            }else if(value instanceof Integer && resultvalue instanceof Integer){
+                if(resultvalue == value){
+                    return true;
+                }
             }
         }
         return false;

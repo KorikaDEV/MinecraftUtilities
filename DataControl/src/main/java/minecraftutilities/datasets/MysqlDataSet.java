@@ -8,11 +8,12 @@ import minecraftutilities.output.ResponseDataRow;
 
 import java.util.ArrayList;
 
-public class SqliteDataSet extends DataSet {
+public class MysqlDataSet extends DataSet {
 
-    public SqliteDataSet(ArrayList<DataColumnConstructor> columns, String[] types) {
-        super(DataStorageType.SQLITE, columns, types);
+    public MysqlDataSet(ArrayList<DataColumnConstructor> columns) {
+        super(DataStorageType.MYSQL, columns);
     }
+    
 
     @Override
     public void save(Object[] data) {
@@ -20,7 +21,7 @@ public class SqliteDataSet extends DataSet {
     }
 
     @Override
-    public boolean contains(String row, String value) {
+    public boolean contains(String row, Object value) {
         return false;
     }
 

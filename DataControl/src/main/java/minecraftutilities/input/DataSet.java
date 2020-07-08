@@ -8,17 +8,15 @@ public abstract class DataSet {
 
     public DataStorageType type;
     public ArrayList<DataColumnConstructor> columns;
-    public String[] types;
 
-    public DataSet(DataStorageType type, ArrayList<DataColumnConstructor> columns, String[] types){
+    public DataSet(DataStorageType type, ArrayList<DataColumnConstructor> columns){
 
         this.type = type;
         this.columns = columns;
-        this.types = types;
     }
 
     public abstract void save(Object[] data);
-    public abstract boolean contains(String row, String value);
+    public abstract boolean contains(String row, Object value);
     public abstract ArrayList<ResponseDataRow> get(DataIndicator dataIndicator);
     public abstract void init();
 }
