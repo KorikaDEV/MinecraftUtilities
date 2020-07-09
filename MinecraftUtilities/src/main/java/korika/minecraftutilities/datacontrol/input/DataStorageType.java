@@ -1,4 +1,4 @@
-package minecraftutilities.input;
+package korika.minecraftutilities.datacontrol.input;
 
 public enum DataStorageType {
     MYSQL,

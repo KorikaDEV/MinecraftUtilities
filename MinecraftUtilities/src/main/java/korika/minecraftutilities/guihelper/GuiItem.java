@@ -1,4 +1,4 @@
-package de.minecraftutilities.guihelper;
+package korika.minecraftutilities.guihelper;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

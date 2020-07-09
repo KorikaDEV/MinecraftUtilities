@@ -1,10 +1,10 @@
-package minecraftutilities.datasets;
+package korika.minecraftutilities.datacontrol.datasets;
 
-import minecraftutilities.input.DataColumnConstructor;
-import minecraftutilities.input.DataIndicator;
-import minecraftutilities.input.DataSet;
-import minecraftutilities.input.DataStorageType;
-import minecraftutilities.output.ResponseDataRow;
+import korika.minecraftutilities.datacontrol.input.DataColumnConstructor;
+import korika.minecraftutilities.datacontrol.input.DataIndicator;
+import korika.minecraftutilities.datacontrol.input.DataSet;
+import korika.minecraftutilities.datacontrol.input.DataStorageType;
+import korika.minecraftutilities.datacontrol.output.ResponseDataRow;
 
 import java.util.ArrayList;
 

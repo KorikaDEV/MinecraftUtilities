@@ -1,12 +1,12 @@
-package minecraftutilities.datasets;
+package korika.minecraftutilities.datacontrol.datasets;
 
-import minecraftutilities.datacontrol.*;
-import minecraftutilities.input.DataColumnConstructor;
-import minecraftutilities.input.DataIndicator;
-import minecraftutilities.input.DataSet;
-import minecraftutilities.input.DataStorageType;
-import minecraftutilities.output.DataColumn;
-import minecraftutilities.output.ResponseDataRow;
+import korika.minecraftutilities.datacontrol.input.DataColumnConstructor;
+import korika.minecraftutilities.datacontrol.input.DataIndicator;
+import korika.minecraftutilities.datacontrol.input.DataSet;
+import korika.minecraftutilities.datacontrol.input.DataStorageType;
+import korika.minecraftutilities.datacontrol.output.DataColumn;
+import korika.minecraftutilities.datacontrol.output.ResponseDataRow;
+import korika.minecraftutilities.MinecraftUtilities;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -91,7 +91,7 @@ public class YmlDataSet extends DataSet {
 
     @Override
     public void init() {
-        ymlFile = new File(DataControl.dcplugin.getDataFolder()+"/"+ configName + ".yml");
+        ymlFile = new File(MinecraftUtilities.MUPlugin.getDataFolder()+"/"+ configName + ".yml");
         config = YamlConfiguration.loadConfiguration(ymlFile);
         try {
             config.save(ymlFile);

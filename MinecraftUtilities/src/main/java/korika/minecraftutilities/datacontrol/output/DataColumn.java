@@ -1,4 +1,4 @@
-package minecraftutilities.output;
+package korika.minecraftutilities.datacontrol.output;
 
 public class DataColumn {
     public String columnName;

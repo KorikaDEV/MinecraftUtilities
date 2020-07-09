@@ -1,4 +1,4 @@
-package de.minecraftutilities.guihelper;
+package korika.minecraftutilities.guihelper;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,7 +12,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Method;
-import java.util.function.Function;
 
 public class Gui implements Listener {
 
