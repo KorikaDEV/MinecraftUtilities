@@ -1,6 +1,6 @@
-package minecraftutilities.input;
+package korika.minecraftutilities.datacontrol.input;
 
-import minecraftutilities.output.ResponseDataRow;
+import korika.minecraftutilities.datacontrol.output.ResponseDataRow;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package minecraftutilities.output;
+package korika.minecraftutilities.datacontrol.output;
 
 import java.util.ArrayList;
 
