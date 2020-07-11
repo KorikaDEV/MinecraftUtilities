@@ -6,14 +6,22 @@ import korika.minecraftutilities.datacontrol.input.DataSet;
 import korika.minecraftutilities.datacontrol.input.DataStorageType;
 import korika.minecraftutilities.datacontrol.output.ResponseDataRow;
 
+import java.sql.*;
 import java.util.ArrayList;
 
 public class MysqlDataSet extends DataSet {
 
-    public MysqlDataSet(ArrayList<DataColumnConstructor> columns) {
-        super(DataStorageType.MYSQL, columns);
-    }
-    
+    Connection con;
+    String table, adress, database, user, password;
+
+    public MysqlDataSet(ArrayList<DataColumnConstructor> columns, String table, String adress, String database, String user, String password) {
+            super(DataStorageType.MYSQL, columns);
+            this.table = table;
+            this.adress = adress;
+            this.database = database;
+            this.user = user;
+            this.password = password;
+        }
 
     @Override
     public void save(Object[] data) {
@@ -31,7 +39,39 @@ public class MysqlDataSet extends DataSet {
     }
 
     @Override
-    public void init() {
+        public void init() {
+            String connectionCommand = "jdbc:mysql://"+adress+"/"+database+"?user="+user+"&password="+password;
+            try {
+                con = DriverManager.getConnection(connectionCommand);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
 
+            String statement = "CREATE TABLE IF NOT EXISTS " + table + " (";
+            for(DataColumnConstructor dcc : columns){
+                switch(dcc.type){
+                    case INT:
+                        statement += dcc.name + " int(10)";
+                        break;
+                    case STRING:
+                        statement += dcc.name + " varchar(255)";
+                        break;
+                    case DATE:
+                        statement += dcc.name + "' date";
+                        break;
+                    default:
+                        break;
+                }
+                if((columns.indexOf(dcc) + 1) != columns.size()){
+                    statement += ",";
+                }
+            }
+            statement += ")";
+            try{
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(statement);
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
     }
-}
