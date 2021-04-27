@@ -3,40 +3,42 @@ package de.minecraftutilities.guihelper;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import java.lang.reflect.Method;
+
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.concurrent.Callable;
+
 
 public class GuiItem extends ItemStack {
 
     private int position;
-    Method method = getMethod();
+    private Callable<Void> callable;
 
     public GuiItem(final Material material, final String name, final String... lore) {
         this.setAmount(1);
         this.setType(material);
         final ItemMeta meta = this.getItemMeta();
-        meta.setDisplayName(name);
+        Objects.requireNonNull(meta).setDisplayName(name);
         meta.setLore(Arrays.asList(lore));
         this.setItemMeta(meta);
     }
 
-
-    public GuiItem(final Material material, final String name, Method method, final String... lore) {
+    public GuiItem(final Material material, final String name, Callable<Void> callable, final String... lore) {
         this.setAmount(1);
         this.setType(material);
         final ItemMeta meta = this.getItemMeta();
-        meta.setDisplayName(name);
+        Objects.requireNonNull(meta).setDisplayName(name);
         meta.setLore(Arrays.asList(lore));
         this.setItemMeta(meta);
-        this.method = method;
+        this.callable = callable;
     }
 
-    public Method getMethod() {
-        return method;
+    public Callable<Void> getCallable() {
+        return callable;
     }
 
-    public void setMethod(Method method) {
-        this.method = method;
+    public void setCallable(Callable<Void> callable) {
+        this.callable = callable;
     }
 
     public int getPosition() {
